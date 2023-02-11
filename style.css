@@ -1,0 +1,42 @@
+body {
+    height : 100vh;
+    width : 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    height: 600px;
+    width: 600px;
+    border-style: solid;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+}
+
+.screen {
+    height: 100px;
+    width: 550px;
+    border-style: solid;
+    border-radius: 25px;
+    margin: 20px;
+}
+
+.key{
+    display: flex;
+    flex-direction:row;
+}
+
+.key-button{
+    height: 60px;
+    width: 100px;
+    border-style: solid;
+    border-radius: 25px;
+    margin: 10px;
+}
