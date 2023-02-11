@@ -1,3 +1,7 @@
+// variables for the project
+let a;
+let b;
+
 // Basic arithmetic functions
 function add(a = 0, b = 0){
     return a + b; 
@@ -34,3 +38,30 @@ function operate(operator, number1, number2){
         }
 
 }
+// select buttons using node
+const number = document.querySelectorAll('#number');
+const sign = document.querySelectorAll('#sign');
+const equalSign = document.querySelectorAll('#equal');
+
+// add event listener 
+
+number.forEach(
+    number => number.addEventListener( 'click' , () => {
+        let x = number.innerHTML;
+            console.log(x);
+    })
+)
+
+sign.forEach(
+    sign => sign.addEventListener( 'click' , () => {
+        let x = sign.innerHTML;
+            console.log(x);
+    })
+)
+
+equalSign.forEach(
+    equal => equal.addEventListener( 'click' , () => {
+        let x = equal.innerHTML;
+            console.log(x);
+    })
+)
