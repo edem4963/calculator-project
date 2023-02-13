@@ -1,6 +1,9 @@
 // variables for the project
 let a;
 let b;
+let display;
+let number1;
+let number2;
 
 // Basic arithmetic functions
 function add(a = 0, b = 0){
@@ -42,13 +45,18 @@ function operate(operator, number1, number2){
 const number = document.querySelectorAll('#number');
 const sign = document.querySelectorAll('#sign');
 const equalSign = document.querySelectorAll('#equal');
-
+const screen = document.querySelector('.screen');
 // add event listener 
 
 number.forEach(
-    number => number.addEventListener( 'click' , () => {
+    number => number.addEventListener( 'click' , function num() {
         let x = number.innerHTML;
-            console.log(x);
+            //console.log(x);
+        display = screen.innerHTML += x;
+        if (number1 == undefined){
+            number1 = display.valueOf();
+        }
+      
     })
 )
 
