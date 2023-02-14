@@ -51,20 +51,22 @@ number.forEach(
     number => number.addEventListener( 'click' , function num() {
         let x = number.innerHTML;
             //console.log(x);
-        display = screen.innerText += x;    
+        display = screen.innerText +=  x;    
     })
 )
 
 sign.forEach(
     sign => sign.addEventListener( 'click' , () => {
-        let x = sign.innerHTML;
+        let x = sign.innerText;
             console.log(x);
+            display = screen.innerText += ` ${x}\u00A0`;  
     })
 )
 
 equalSign.forEach(
     equal => equal.addEventListener( 'click' , () => {
-        let x = equal.innerHTML;
+        let x = equal.innerText;
             console.log(x);
+            display = screen.innerText += x;  
     })
 )
