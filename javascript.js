@@ -2,8 +2,7 @@
 let a;
 let b;
 let display;
-let number1;
-let number2;
+
 
 // Basic arithmetic functions
 function add(a = 0, b = 0){
@@ -52,11 +51,7 @@ number.forEach(
     number => number.addEventListener( 'click' , function num() {
         let x = number.innerHTML;
             //console.log(x);
-        display = screen.innerHTML += x;
-        if (number1 == undefined){
-            number1 = display.valueOf();
-        }
-      
+        display = screen.innerText += x;    
     })
 )
 
