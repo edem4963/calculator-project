@@ -1,12 +1,13 @@
 // variables for the project
-let a;
-let b;
+let a = "";
+let b = "";
 let display;
+let esign;
 
 
 // Basic arithmetic functions
 function add(a = 0, b = 0){
-    return a + b; 
+    return parseInt(a) + parseInt(b); 
 }
 
 function subtract(a, b){
@@ -21,20 +22,20 @@ function divide(a, b){
     return a / b;
 }
 
-function operate(operator, number1, number2){
-    let a = number1;
-    let b = number2;
+function operate(esign, a , b){
+    //let a = number1;
+    ///let b = number2;
 
-        if(operator == "add"){
+        if(esign == "add"){
             let calculate = add(a,b);
                 return calculate;
-        } else if(operator == "subtract"){
+        } else if(esign == "subtract"){
             let calculate = subtract(a,b);
                 return calculate;
-        } else if(operator == "multiply"){
+        } else if(esign == "multiply"){
             let calculate = multiply(a,b);
                 return calculate;
-        } else if(operator == "divide"){
+        } else if(esign == "divide"){
             let calculate = divide(a,b);
                 return calculate;
         }
@@ -51,7 +52,7 @@ number.forEach(
     number => number.addEventListener( 'click' , function num() {
         let x = number.innerHTML;
             //console.log(x);
-        display = screen.innerText +=  x;    
+        display = screen.innerText +=  x; 
     })
 )
 
@@ -59,14 +60,40 @@ sign.forEach(
     sign => sign.addEventListener( 'click' , () => {
         let x = sign.innerText;
             console.log(x);
-            display = screen.innerText += ` ${x}\u00A0`;  
+            display = screen.innerText += x;  
     })
 )
 
 equalSign.forEach(
     equal => equal.addEventListener( 'click' , () => {
-        let x = equal.innerText;
-            console.log(x);
-            display = screen.innerText += x;  
-    })
+        //let x = equal.innerText;
+          //  console.log(x);
+            //display = screen.innerText += x;
+            for ( i = 0; i < display.length ; i++){
+                if( isNaN(display[i]) ){
+                   if( display[i] == "+" ){
+                     esign = "add";
+                   }
+                   else if( display[i] == "-" ){
+                     esign = "subtract";
+                   }
+                   else if( display[i] == "x" ){
+                     esign = "multiply";
+                   }
+                   else{ 
+                     esign = "divide";
+                   }
+                }
+               else if( b == '' && esign == undefined ){
+                 a += display[i];
+               }
+               else if ( a !== undefined && esign !== undefined ){
+                 b += display[i];
+               }
+             }
+             
+            console.log(operate(esign, a , b)); 
+            
+             
+        })
 )
