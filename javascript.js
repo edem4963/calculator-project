@@ -3,6 +3,7 @@ let a = "";
 let b = "";
 let display;
 let esign;
+let calculate = 0;
 
 
 // Basic arithmetic functions
@@ -27,16 +28,16 @@ function operate(esign, a , b){
     ///let b = number2;
 
         if(esign == "add"){
-            let calculate = add(a,b);
+            calculate += add(a,b);
                 return calculate;
         } else if(esign == "subtract"){
-            let calculate = subtract(a,b);
+            calculate += subtract(a,b);
                 return calculate;
         } else if(esign == "multiply"){
-            let calculate = multiply(a,b);
+            calculate += multiply(a,b);
                 return calculate;
         } else if(esign == "divide"){
-            let calculate = divide(a,b);
+            calculate += divide(a,b);
                 return calculate;
         }
 
@@ -93,7 +94,9 @@ equalSign.forEach(
              }
              
             console.log(operate(esign, a , b)); 
-            
+            display = screen.innerText = String(calculate);
+            a = '';
+            b = '';  
              
         })
 )
