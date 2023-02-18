@@ -85,7 +85,7 @@ equalSign.forEach(
                      esign = "divide";
                    }
                 }
-               else if( b == '' && esign == undefined ){
+               else if(  esign == undefined ){
                  a += display[i];
                }
                else if ( a !== undefined && esign !== undefined ){
@@ -96,7 +96,9 @@ equalSign.forEach(
             console.log(operate(esign, a , b)); 
             display = screen.innerText = String(calculate);
             a = '';
-            b = '';  
+            b = '';
+            esign = undefined;
+            calculate = 0;  
              
         })
 )
