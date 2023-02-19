@@ -64,6 +64,48 @@ sign.forEach(
             display = screen.innerText += x;  
     })
 )
+sign.forEach(
+    sign => sign.addEventListener( 'click' , () => {
+        let x = sign.innerText;
+            console.log(x);
+            if((display.slice(display.length-1) ==  "+" 
+                || display.slice(display.length-1) ==  "-" 
+                || display.slice(display.length-1) ==  "x"
+                || display.slice(display.length-1) ==  "÷")
+                &&
+                (a !== '' && b !== '' ) )  {
+                for ( i = 0; i < display.length ; i++){
+                    if( isNaN(display[i]) ){
+                       if( display[i] == "+" ){
+                         esign = "add";
+                       }
+                       else if( display[i] == "-" ){
+                         esign = "subtract";
+                       }
+                       else if( display[i] == "x" ){
+                         esign = "multiply";
+                       }
+                       else{ 
+                         esign = "divide";
+                       }
+                    }
+                   else if(  esign == undefined ){
+                     a += display[i];
+                   }
+                   else if ( a !== undefined && esign !== undefined ){
+                     b += display[i];
+                   }
+                 }
+                 
+                console.log(operate(esign, a , b)); 
+                display = screen.innerText = String(calculate);
+                a = '';
+                b = '';
+                esign = undefined;
+                calculate = 0;    
+            }
+    })
+)
 
 equalSign.forEach(
     equal => equal.addEventListener( 'click' , () => {
