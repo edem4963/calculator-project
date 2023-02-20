@@ -74,9 +74,11 @@ sign.forEach(
                 || display.slice(display.length-1) ==  "x"
                 || display.slice(display.length-1) ==  "÷")
                 &&
-                (display.length > 3))  {
+                (display.length > 3)
+                &&
+                ((display.match(/\+|x|\÷|\-/g)|| []).length > 1))  {
                 for ( i = 0; i < display.length-1 ; i++){
-                    if( isNaN(display[i]) ){
+                    if( (isNaN(display[i])) && (display.length > 1) ){
                        if( display[i] == "+" ){
                          esign = "add";
                        }
@@ -114,6 +116,7 @@ equalSign.forEach(
           //  console.log(x);
             //display = screen.innerText += x;
             for ( i = 0; i < display.length ; i++){
+              calculate = 0;
                 if( isNaN(display[i]) ){
                    if( display[i] == "+" ){
                      esign = "add";
@@ -141,7 +144,7 @@ equalSign.forEach(
             a = '';
             b = '';
             esign = undefined;
-            calculate = 0;  
+  
              
         })
 )
