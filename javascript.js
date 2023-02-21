@@ -8,19 +8,19 @@ let calculate = 0;
 
 // Basic arithmetic functions
 function add(a = 0, b = 0){
-    return parseInt(a) + parseInt(b); 
+    return +a + +b; 
 }
 
 function subtract(a, b){
-    return a - b;
+    return +a - +b;
 }
 
 function multiply(a, b){
-    return a * b;
+    return +a * +b;
 }
 
 function divide(a, b){
-    return a / b;
+    return +a / +b;
 }
 
 function operate(esign, a , b){
@@ -68,15 +68,13 @@ sign.forEach(
     sign => sign.addEventListener( 'click' , () => {
         let x = sign.innerText;
         let z = display.slice(display.length-1);
+        let y = display.match(/[0-9](\+|x|\÷|\-)$/g)
             console.log(x);
-            if((display.slice(display.length-1) ==  "+" 
-                || display.slice(display.length-1) ==  "-" 
-                || display.slice(display.length-1) ==  "x"
-                || display.slice(display.length-1) ==  "÷")
+            if((display.slice(display.length-2) ==  y)
                 &&
                 (display.length > 3)
                 &&
-                ((display.match(/\+|x|\÷|\-/g)|| []).length > 1))  {
+                ((display.match(/\+|x|\÷|\-/g)|| []).length >= 2))  {
                 for ( i = 0; i < display.length-1 ; i++){
                     if( (isNaN(display[i])) && (display.length > 1) ){
                        if( display[i] == "+" ){
@@ -116,8 +114,8 @@ equalSign.forEach(
           //  console.log(x);
             //display = screen.innerText += x;
             for ( i = 0; i < display.length ; i++){
-              calculate = 0;
-                if( isNaN(display[i]) ){
+              
+                if( isNaN(display[i]) && i > 0 ){
                    if( display[i] == "+" ){
                      esign = "add";
                    }
@@ -144,7 +142,6 @@ equalSign.forEach(
             a = '';
             b = '';
             esign = undefined;
-  
-             
+            calculate = 0;
         })
 )
