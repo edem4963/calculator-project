@@ -4,7 +4,7 @@ let b = "";
 let display;
 let esign;
 let calculate = 0;
-
+let roundCalc;
 
 // Basic arithmetic functions
 function add(a = 0, b = 0){
@@ -76,7 +76,7 @@ sign.forEach(
                 &&
                 ((display.match(/\+|x|\÷|\-/g)|| []).length >= 2))  {
                 for ( i = 0; i < display.length-1 ; i++){
-                    if( (isNaN(display[i])) && (display.length > 1) ){
+                    if( (isNaN(display[i])) && i > 0 && display[i] !== "." ){
                        if( display[i] == "+" ){
                          esign = "add";
                        }
@@ -99,7 +99,13 @@ sign.forEach(
                  }
                  
                 console.log(operate(esign, a , b));
-                display = screen.innerText = String(calculate) + z;
+                if(String(calculate).length > 5 ){
+                  roundCalc = String(calculate).slice(0, 9);
+                  display = screen.innerText =roundCalc + z;
+                } else {
+                  display = screen.innerText = String(calculate) + z;
+                }
+                //display = screen.innerText = String(calculate) + z;
                 a = '';
                 b = '';
                 esign = undefined;
@@ -115,7 +121,7 @@ equalSign.forEach(
             //display = screen.innerText += x;
             for ( i = 0; i < display.length ; i++){
               
-                if( isNaN(display[i]) && i > 0 ){
+                if( isNaN(display[i]) && i > 0  && display[i] !== "."){
                    if( display[i] == "+" ){
                      esign = "add";
                    }
@@ -129,16 +135,21 @@ equalSign.forEach(
                      esign = "divide";
                    }
                 }
-               else if(  esign == undefined ){
+               else if(  esign == undefined || display[i] == "."){
                  a += display[i];
                }
-               else if ( a !== undefined && esign !== undefined ){
+               else if ( a !== undefined && esign !== undefined || display[i] == "." ){
                  b += display[i];
                }
              }
              
             console.log(operate(esign, a , b)); 
-            display = screen.innerText = String(calculate);
+            if(String(calculate).length > 5 ){
+              roundCalc = String(calculate).slice(0, 9);
+              display = screen.innerText =roundCalc;
+            } else {
+              display = screen.innerText = String(calculate);
+            }
             a = '';
             b = '';
             esign = undefined;
